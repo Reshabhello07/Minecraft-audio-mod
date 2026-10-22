@@ -75,6 +75,6 @@ public class ConfigScreen extends Screen {
     @Override
     public void onClose() {
         Config.save();
-        Minecraft.getInstance().setScreen(parent);
+        Minecraft.getInstance().gui.setScreen(parent);
     }
 }
