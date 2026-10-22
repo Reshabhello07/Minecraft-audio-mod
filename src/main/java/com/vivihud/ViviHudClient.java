@@ -8,7 +8,9 @@ import net.minecraft.resources.Identifier;
 public class ViviHudClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        Config.load();
         NowPlaying.start();
+        Keys.register();
         HudElementRegistry.attachElementBefore(
                 VanillaHudElements.CHAT,
                 Identifier.fromNamespaceAndPath("vivihud", "now_playing"),
