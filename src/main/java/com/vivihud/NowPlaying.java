@@ -17,6 +17,7 @@ public final class NowPlaying {
     public static volatile Track track;
     public static volatile long lastPlayingMs;
     private static int lastArt = 0;
+    private static int lastLyr = 0;
 
     private NowPlaying() {}
 
@@ -100,6 +101,20 @@ public final class NowPlaying {
                 }
             } else {
                 ArtTexture.clear();
+            }
+        }
+
+        int lyrHash = Config.lyrics && o.has("lyr") ? o.get("lyr").getAsInt() : 0;
+        if (lyrHash != lastLyr) {
+            lastLyr = lyrHash;
+            if (lyrHash != 0) {
+                try {
+                    Lyrics.set(new String(get("/lyrics"), StandardCharsets.UTF_8));
+                } catch (Exception e) {
+                    lastLyr = Integer.MIN_VALUE; // retry next poll
+                }
+            } else {
+                Lyrics.clear();
             }
         }
 
