@@ -3,12 +3,13 @@
   "id": "vivihud",
   "version": "${version}",
   "name": "Vivi HUD",
-  "description": "Shows the song playing on your phone (via the Vivi HUD Companion app) as an in-game HUD.",
+  "description": "Shows the song playing on your phone as an in-game HUD.",
   "authors": [],
   "license": "MIT",
   "environment": "client",
   "entrypoints": {
-    "client": ["com.vivihud.ViviHudClient"]
+    "client": ["com.vivihud.ViviHudClient"],
+    "modmenu": ["com.vivihud.ModMenuIntegration"]
   },
   "depends": {
     "fabricloader": ">=0.19.1",
